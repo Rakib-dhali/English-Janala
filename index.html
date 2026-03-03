@@ -24,9 +24,139 @@
       href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./style.css" />
   </head>
-  <body>
-
+  <body class="w-full max-w-[1920px] md:h-screen h-dvh p-5">
+    <header class="w-full bg-[#BADEFF]/26 max-w-[1720px] mx-auto">
+      <div class="navbar">
+        <div class="flex-1">
+          <a href="./index.html" class="text-xl flex items-center"
+            ><span>English</span><img src="./assets/logo.png" alt="" /><span
+              class="font-bangla"
+              >জানালা</span
+            ></a
+          >
+        </div>
+        <div class="navbar-end">
+          <div class="flex-none hidden md:block">
+            <ul class="px-1 flex justify-between gap-5">
+              <li class="border-2 rounded-md border-[#422AD5]">
+                <a class="flex gap-2 px-4 py-2"
+                  ><img src="./assets/fa-arrow-right-from-bracket.png" alt="" />
+                  <p class="text-[#422AD5] text-sm leading-5 font-semibold">
+                    FAQ
+                  </p></a
+                >
+              </li>
+              <li class="border-2 rounded-md border-[#422AD5]">
+                <a class="flex gap-2 px-4 py-2"
+                  ><img src="./assets/fa-book-open.png" alt="" />
+                  <p class="text-[#422AD5] text-sm leading-5 font-semibold">
+                    Learn
+                  </p></a
+                >
+              </li>
+              <li class="border-2 rounded-md border-[#422AD5]">
+                <a class="flex gap-2 px-4 py-2"
+                  ><img src="./assets/fa-arrow-right-from-bracket.png" alt="" />
+                  <p class="text-[#422AD5] text-sm leading-5 font-semibold">
+                    Logout
+                  </p></a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="dropdown dropdown-end block md:hidden">
+            <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h7"
+                />
+              </svg>
+            </div>
+            <ul
+              tabindex="0"
+              class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+            >
+              <li class="border-2 rounded-md border-[#422AD5] mb-5">
+                <a class="flex gap-2 px-4 py-2"
+                  ><img src="./assets/fa-arrow-right-from-bracket.png" alt="" />
+                  <p class="text-[#422AD5] text-sm leading-5 font-semibold">
+                    FAQ
+                  </p></a
+                >
+              </li>
+              <li class="border-2 rounded-md border-[#422AD5] mb-5">
+                <a class="flex gap-2 px-4 py-2"
+                  ><img src="./assets/fa-book-open.png" alt="" />
+                  <p class="text-[#422AD5] text-sm leading-5 font-semibold">
+                    Learn
+                  </p></a
+                >
+              </li>
+              <li class="border-2 rounded-md border-[#422AD5]">
+                <a class="flex gap-2 px-4 py-2"
+                  ><img src="./assets/fa-arrow-right-from-bracket.png" alt="" />
+                  <p class="text-[#422AD5] text-sm leading-5 font-semibold">
+                    Logout
+                  </p></a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+    <section
+      class="flex flex-col-reverse md:flex-row max-w-[1720px] mx-auto mt-20"
+    >
+      <div
+        class="content flex flex-col items-center md:items-start justify-center w-[90%] md:w-1/2"
+      >
+        <h2 class="text-5xl font-semibold mb-10">
+          <span class="text-[#00bcff]">English</span> is Easy!!
+        </h2>
+        <p class="mb-10 text-center md:text-left">
+          <span class="font-bangla"
+            >আজ থেকেই আপনার ভাষা শেখার যাত্রা শুরু করুন। আপনি যদি নতুন হন অথবা
+            আপনার দক্ষতা বাড়াতে চান, আমাদের </span
+          >Interactive Lessons
+          <span class="font-bangla">আপনাকে নিয়ে যাবে অন্য একটি</span> Level
+          <span class="font-bangla">এ</span>
+        </p>
+        <form>
+          <input
+            type="text"
+            placeholder="Enter Your Name"
+            class="mb-5 px-3 py-2 rounded-sm border-neutral-400"
+          />
+          <br />
+          <input
+            type="password"
+            placeholder="***********"
+            class="mb-5 px-3 py-2 rounded-sm border-neutral-400"
+          />
+          <br />
+          <button
+            class="text-white bg-[#422AD5] rounded-md font-semi-bold px-3 py-2"
+            type="submit"
+          >
+            SUBMIT
+          </button>
+        </form>
+      </div>
+      <div class="image flex items-center justify-center">
+        <img src="./assets/hero-student.png" alt="" />
+      </div>
+    </section>
   </body>
 </html>
