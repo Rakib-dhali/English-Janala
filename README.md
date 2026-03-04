@@ -1,4 +1,4 @@
-# English Janala 🇬🇧🪟
+# English Janala
 
 **English Janala** is a modern, interactive web application designed to help Bengali speakers learn English effectively through structured lessons, vocabulary practice, and an intuitive user interface.
 
