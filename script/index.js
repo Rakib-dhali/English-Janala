@@ -3,7 +3,6 @@ const loadLessons = () => {
     .then((response) => response.json()) //promise of json data
     .then((json) => displayLesson(json.data));
 };
-
 const loadLevelWord = (id) => {
   manageSpinner(true);
   const url = `https://openapi.programming-hero.com/api/level/${id}`;
@@ -25,7 +24,6 @@ const loadWordDetails = async (id) => {
 };
 
 const displaywordetails = (word) => {
-  console.log(word);
   const detailsBox = document.getElementById("details-container");
   detailsBox.innerHTML = `
     <div class="">
@@ -102,7 +100,7 @@ const displayLevelWord = (words) => {
         </div>
         <div class="flex items-center justify-between">
           <button onclick="loadWordDetails(${word.id})" class="btn bg-[#1a91ff10] hover:bg-[#1a91ff80]"><i class="fa-solid fa-circle-info"></i></button>
-          <button class="btn bg-[#1a91ff10] hover:bg-[#1a91ff80]"><i class="fa-solid fa-volume-high"></i></button>
+          <button onclick="pronounceWord('${word.word}')" class="btn bg-[#1a91ff10] hover:bg-[#1a91ff80]"><i class="fa-solid fa-volume-high"></i></button>
         </div>
 
       </div>`;
@@ -116,7 +114,6 @@ const displayLesson = (lessons) => {
   const levelContainer = document.getElementById("level-container");
   levelContainer.innerHTML = "";
   for (let lesson of lessons) {
-    console.log(lesson);
     const btnDiv = document.createElement("div");
     btnDiv.innerHTML = `
     <button id="lesson-btn-${lesson.level_no}" onclick="loadLevelWord(${lesson.level_no})" class="border-2 rounded-md border- text-[#422AD5] lesson-btn">
@@ -148,3 +145,9 @@ document.getElementById("btn-search").addEventListener("click", () => {
     });
 
 });
+
+function pronounceWord(word) {
+  const utterance = new SpeechSynthesisUtterance(word);
+  utterance.lang = "en-EN"; // English
+  window.speechSynthesis.speak(utterance);
+}
