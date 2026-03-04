@@ -5,7 +5,7 @@ const loadLessons = () => {
 };
 
 const loadLevelWord = (id) => {
-  manageSpinner(true)
+  manageSpinner(true);
   const url = `https://openapi.programming-hero.com/api/level/${id}`;
   fetch(url)
     .then((res) => res.json())
@@ -62,16 +62,15 @@ const removeActive = () => {
   lessonBtn.forEach((btn) => btn.classList.remove("active"));
 };
 
-const manageSpinner = (status)=>{
-  if(status=== true){
-    document.getElementById("spinner").classList.remove("hidden")
-    document.getElementById("word-container").classList.add("hidden")
-  }else{
-    document.getElementById("spinner").classList.add("hidden")
-    document.getElementById("word-container").classList.remove("hidden")
-  
+const manageSpinner = (status) => {
+  if (status === true) {
+    document.getElementById("spinner").classList.remove("hidden");
+    document.getElementById("word-container").classList.add("hidden");
+  } else {
+    document.getElementById("spinner").classList.add("hidden");
+    document.getElementById("word-container").classList.remove("hidden");
   }
-}
+};
 
 const displayLevelWord = (words) => {
   const wordContainer = document.getElementById("word-container");
@@ -88,7 +87,7 @@ const displayLevelWord = (words) => {
     </div>
     
     `;
-    manageSpinner(false)
+    manageSpinner(false);
     return;
   }
 
@@ -110,7 +109,7 @@ const displayLevelWord = (words) => {
 
     wordContainer.append(card);
   });
-  manageSpinner(false)
+  manageSpinner(false);
 };
 
 const displayLesson = (lessons) => {
@@ -132,3 +131,20 @@ const displayLesson = (lessons) => {
   }
 };
 loadLessons();
+
+document.getElementById("btn-search").addEventListener("click", () => {
+  removeActive();
+  const input = document.getElementById("input-search");
+  const searchValue = input.value.trim().toLowerCase();
+
+  fetch("https://openapi.programming-hero.com/api/words/all")
+    .then((res) => res.json())
+    .then((data) => {
+      const allWords = data.data;
+      const filterWords = allWords.filter((word) =>
+        word.word.toLowerCase().includes(searchValue),
+      );
+      displayLevelWord(filterWords);
+    });
+
+});
