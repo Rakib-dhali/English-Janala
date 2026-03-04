@@ -8,7 +8,18 @@ const loadLevelWord = (id) => {
   const url = `https://openapi.programming-hero.com/api/level/${id}`;
   fetch(url)
     .then((res) => res.json())
-    .then((data) => displayLevelWord(data.data));
+    .then((data) => {
+      const clickBtn = document.getElementById(`lesson-btn-${id}`);
+      removeActive();
+      clickBtn.classList.add("active");
+      displayLevelWord(data.data);
+    });
+};
+
+const removeActive = () => {
+  const lessonBtn = document.querySelectorAll(".lesson-btn");
+  console.log(lessonBtn);
+  lessonBtn.forEach((btn) => btn.classList.remove("active"));
 };
 
 const displayLevelWord = (words) => {
@@ -57,10 +68,10 @@ const displayLesson = (lessons) => {
     console.log(lesson);
     const btnDiv = document.createElement("div");
     btnDiv.innerHTML = `
-    <button onclick="loadLevelWord(${lesson.level_no})" class="border-2 rounded-md border-[#422AD5]">
+    <button id="lesson-btn-${lesson.level_no}" onclick="loadLevelWord(${lesson.level_no})" class="border-2 rounded-md border- text-[#422AD5] lesson-btn">
         <a class="flex gap-2 px-4 py-2">
-        <img src="./assets/fa-book-open.png" alt="" />
-        <p class="text-[#422AD5] text-sm leading-5 font-semibold">lesson-${lesson.level_no}</p>
+        <i class="fa-solid fa-book-open"></i>
+        <p class=" text-sm leading-5 font-semibold">lesson-${lesson.level_no}</p>
         </a>
     </button>
         `;
