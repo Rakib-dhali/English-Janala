@@ -16,9 +16,48 @@ const loadLevelWord = (id) => {
     });
 };
 
+const loadWordDetails = async (id) => {
+  const url = `https://openapi.programming-hero.com/api/word/${id}`;
+  const res = await fetch(url);
+  const details = await res.json();
+  displaywordetails(details.data);
+};
+
+const displaywordetails = (word) => {
+  console.log(word);
+  const detailsBox = document.getElementById("details-container");
+  detailsBox.innerHTML = `
+    <div class="">
+            <h2 class="text-2xl font-bold">
+              ${word.word} (<i class="fa-solid fa-microphone-lines"></i> :${
+                word.pronunciation
+              })
+            </h2>
+          </div>
+          <div class="">
+            <h2 class="font-bold">Meaning</h2>
+            <p>${word.meaning}</p>
+          </div>
+          <div class="">
+            <h2 class="font-bold">Example</h2>
+            <p>${word.sentence}</p>
+          </div>
+          <div class="">
+            <h2 class="font-bold">Synonym</h2>
+            <div class="">${createElements(word.synonyms)}</div>
+          </div>
+    `;
+
+  document.getElementById("word_modal").showModal();
+};
+
+const createElements = (arr) => {
+  const htmlElements = arr.map((el) => `<span class="btn">${el}</span>`);
+  return htmlElements.join(" ");
+};
+
 const removeActive = () => {
   const lessonBtn = document.querySelectorAll(".lesson-btn");
-  console.log(lessonBtn);
   lessonBtn.forEach((btn) => btn.classList.remove("active"));
 };
 
@@ -41,7 +80,6 @@ const displayLevelWord = (words) => {
   }
 
   words.forEach((word) => {
-    console.log(word);
     const card = document.createElement("div");
     card.innerHTML = `
         <div class="bg-white rounded text-center shadow-sm py-10 px-5 spacey-y-4">
@@ -51,7 +89,7 @@ const displayLevelWord = (words) => {
           ${word.meaning}/${word.pronunciation}
         </div>
         <div class="flex items-center justify-between">
-          <button class="btn bg-[#1a91ff10] hover:bg-[#1a91ff80]"><i class="fa-solid fa-circle-info"></i></button>
+          <button onclick="loadWordDetails(${word.id})" class="btn bg-[#1a91ff10] hover:bg-[#1a91ff80]"><i class="fa-solid fa-circle-info"></i></button>
           <button class="btn bg-[#1a91ff10] hover:bg-[#1a91ff80]"><i class="fa-solid fa-volume-high"></i></button>
         </div>
 
